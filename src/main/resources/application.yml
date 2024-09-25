@@ -1,0 +1,23 @@
+spring:
+   application:
+          name: kafka-binder-demo
+
+   cloud:
+     function:
+       definition: consumerBiding;processorBiding;producerBinding
+     stream:
+       bindings:
+         producerBinding-out-0:
+           destination: processor-topic
+         processorBiding-in-0:
+           destination: processor-topic
+         processorBiding-out-0:
+           destination: consumer-topic
+         consumerBiding-in-0:
+             destination: consumer-topic
+       kafka:
+         binder:
+           brokers:
+             - localhost:9092
+
+
